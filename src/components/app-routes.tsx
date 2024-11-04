@@ -6,6 +6,7 @@ import { ProjectsPage } from '@/pages/projects';
 import { ProjectPage } from '@/pages/project';
 import { UsersPage } from '@/pages/users';
 import { SettingsPage } from '@/pages/settings';
+import { DevBoardPage } from '@/pages/dev-board';
 
 function PrivateRoute({ children }: { children: React.ReactNode }) {
   const { user } = useAuth();
@@ -67,6 +68,14 @@ export function AppRoutes() {
         element={
           <PrivateRoute>
             <SettingsPage />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/dev-board"
+        element={
+          <PrivateRoute>
+            <DevBoardPage />
           </PrivateRoute>
         }
       />

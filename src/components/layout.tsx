@@ -33,26 +33,38 @@ export function Layout({ children }: { children: React.ReactNode }) {
           <div className="flex h-16 items-center border-b px-6">
             <Link to="/" className="flex items-center space-x-2">
               <Sprout className="h-6 w-6" />
-              <span className="text-lg font-semibold">Agile PM</span>
+              <span className="text-lg font-semibold">Trelo Raro</span>
             </Link>
           </div>
 
           {/* Navigation */}
           <nav className="flex-1 space-y-1 px-3 py-4">
-            <Link
-              to="/dashboard"
-              className="flex items-center space-x-3 rounded-lg px-3 py-2 text-sm hover:bg-accent"
-            >
-              <LayoutDashboard className="h-4 w-4" />
-              <span>Dashboard</span>
-            </Link>
-            <Link
-              to="/projects"
-              className="flex items-center space-x-3 rounded-lg px-3 py-2 text-sm hover:bg-accent"
-            >
-              <ListTodo className="h-4 w-4" />
-              <span>Projects & Tasks</span>
-            </Link>
+            {user.role === 'admin' ? (
+              <>
+                <Link
+                  to="/dashboard"
+                  className="flex items-center space-x-3 rounded-lg px-3 py-2 text-sm hover:bg-accent"
+                >
+                  <LayoutDashboard className="h-4 w-4" />
+                  <span>Dashboard</span>
+                </Link>
+                <Link
+                  to="/projects"
+                  className="flex items-center space-x-3 rounded-lg px-3 py-2 text-sm hover:bg-accent"
+                >
+                  <ListTodo className="h-4 w-4" />
+                  <span>Projects & Tasks</span>
+                </Link>
+              </>
+            ) : (
+              <Link
+                to="/dev-board"
+                className="flex items-center space-x-3 rounded-lg px-3 py-2 text-sm hover:bg-accent"
+              >
+                <ListTodo className="h-4 w-4" />
+                <span>Mi Tablero</span>
+              </Link>
+            )}
             <Link
               to="/settings"
               className="flex items-center space-x-3 rounded-lg px-3 py-2 text-sm hover:bg-accent"
